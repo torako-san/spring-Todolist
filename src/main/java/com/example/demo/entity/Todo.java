@@ -2,12 +2,11 @@ package com.example.demo.entity;
 
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -23,7 +22,7 @@ public class Todo {
 	@Column(name="title")
 	private String title;
 	
-	@Column(name="importname")
+	@Column(name="importance")
 	private Integer importance;
 	
 	@Column(name="urgency")
