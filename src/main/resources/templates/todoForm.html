@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>ToDo List</title>
+		<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+		<form th:action="@{/}" method="post" th:object="${todoData}">
+			<table>
+				<tr>
+					<th>件名</th>
+					<td>
+						<input type ="text" name ="title" size ="40" th:value="*{title}">
+　　　　　<div th:if ="${#fields.hasErrors('title')}" th:errors ="*{title}"
+						th:errorclass ="red"></div >
+					</td>
+				</tr>
+				<tr>
+					<th>重要度</th>
+					<td>
+						<input type="radio" value="1" th:field="*{importance}">高
+						<input type="radio" value="0" th:field="*{importance}">低
+						<div th:if="${#fields.hasErrors('importance')}" th:errors="*{importance}" th:errorclass="red"></div>
+					</td>
+				</tr>
+				<tr>
+					<th>緊急度</th>
+						<td>
+							<select name="urgency">
+								<option value="-1" th:field="*{urgency}">選択してください</option>
+								<option value="1" th:field="*{urgency}">高</option>
+								<option value="0" th:field="*{urgency}">低</option>
+							</select>
+							<div th:if="${#fields.hasErrors('urgency')}" th:errors="*{urgency}" th:errorclass="red"></div>
+						</td>
+				</tr>
+				<tr>
+					<th>期限</th>
+						<td>
+							<input type="text" name="deadline" th:value="*{deadline}" placeholder="yyyy-mm-dd">
+							<div th:if="${#fields.hasErrors('deadline')}" th:errors="*{deadline}" th:errorclass="red"></div>
+						</td>
+				</tr>
+				<tr>
+					<th>チェック</th>
+						<td>
+							<input type="checkbox" value="Y" th:field="*{done}">完了
+							<input type="hidden" name="!done" value="N" />
+						</td>
+				</tr>
+			</table>
+			<div>
+				<button type="submit" th:formaction="@{/todo/create}">登録</button>
+				<button type="submit" th:formaction="@{/todo/cancel}">キャンセル</button>
+			</div>
+		</form>
+	</body>
+</html>
