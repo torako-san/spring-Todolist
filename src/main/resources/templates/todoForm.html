@@ -59,7 +59,7 @@
 			</table>
 			<div th:if="${session.mode == 'update'}">
 				<button type="submit" th:formaction="@{/todo/update}">更新</button>
-				<!--<button type="submit" th:formaction="@{/todo/delete}">削除</button> -->
+				<button type="submit" th:formaction="@{/todo/delete}">削除</button>
 				<button type="submit" th:formaction="@{/todo/cancel}">キャンセル</button>
 			</div>
 			<div th:unless="${session.mode == 'update'}">
