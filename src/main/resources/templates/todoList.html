@@ -18,7 +18,9 @@
 			</tr>
 			<tr th:each="todo:${todoList}">
 				<td th:text="${todo.id}"></td>
-				<td><a th:href="@{/todo/__${todo.id}__}" th:text="${todo.title}"></td>
+				<td>
+					<a th:href="@{/todo/__${todo.id}__}" th:text="${todo.title}"></a>
+				</td>
 				<td th:text="${todo.importance == 1?'★★★':'★'}"></td>
 				<td th:text="${todo.urgency == 1?'★★★':'★'}"></td>
 				<td th:text="${todo.deadline}"></td>
