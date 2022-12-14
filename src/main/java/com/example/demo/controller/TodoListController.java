@@ -44,17 +44,15 @@ public class TodoListController {
 	}
 	
 	@PostMapping("/todo/create")
-	public ModelAndView createTodo(@ModelAttribute @Validated TodoData todoData,
-			BindingResult result, ModelAndView mv) {
+	public String createTodo(@ModelAttribute @Validated TodoData todoData,
+			BindingResult result, Model model) {
 		boolean isValid = todoService.isValid(todoData, result);
 		if(!result.hasErrors()&& isValid) {
 			Todo todo = todoData.toEntity();
 			todoRepository.saveAndFlush(todo);
-			return showTodoList(mv);
+			return "redirect:/todo";
 		} else {
-			mv.setViewName("todoForm");
-			//mav.addObject("todoData", todoData);
-			return mv;
+			return "todoForm";
 		}
 	}
 	
